@@ -11,6 +11,16 @@ module.exports = function (app) {
             });
     });
 
+    app.get("/api/workouts/range", (req, res) => {
+        db.Workout.find({})
+        .then(dbWorkout => {
+            res.json(dbWorkout);
+        })
+        .catch(err => {
+            res.json(err);
+        });
+    })
+
     app.post("/api/workouts", (req, res) => {
         console.log("This is the req!!!" + req.body);
 
